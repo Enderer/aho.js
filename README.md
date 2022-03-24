@@ -11,10 +11,14 @@ npm install aho.js
 ```javascript
 import { createRoot, addPattern, buildAho, findPatterns } from 'aho.js';
 
-const root = createRoot();
 const patterns = ['he', 'she', 'his', 'hers'];
-patterns.forEach(s => addPattern(root, s));
+
+// Create the search trie
+const root = createRoot();
+patterns.forEach(p => addPattern(root, p));
 const built = buildAho(root);
+
+// Look for matches
 const matches = findPatterns(built, 'ushers');
 // ['she', 'he', 'hers']
 ```
@@ -26,13 +30,13 @@ It is possible to search for patterns in an asycnronous string using the ```find
 const asyncChars: AsyncIterable<string> = getAsyncChars(...);
 
 // Get an async list of matches
-const matches = findPatterns(built, asyncChars);
+const matches = findPatternsAsync(built, asyncChars);
 for await(const match of matches) {
   console.log(JSON.stringify(match));
 }
 ```
 
-### Search word tokens
+### Search tokens
 Search on a tokenized list of words instead of at the character level
 
 ```typescript
@@ -49,10 +53,10 @@ const matches = findPatterns(built, tokenizedText);
 ```
 
 ### Search non-char patterns
-You can search for patterns in data other than strings. Any ```Iterable``` data can be used.  A common scenario for this is to convert tokenized words into numbers using a vocabulary to improve performance.
+You can search for patterns in data other than strings. Any ```Iterable``` can be used.  A common scenario for this is to convert tokenized words into numbers using a vocabulary to improve performance.
 
 ```javascript
-const phrases = [
+const patterns = [
   ['blessing', 'in', 'disguise'],
   ['on', 'the', 'ball'],
   ['under', 'the', 'weather']
@@ -85,16 +89,9 @@ z = length of all matches found
 ```
 When the size of the dictionary being matched against is very large ```(n is much larger than m, z)``` most of the time will be spent buiding the search trie.  You can pre-compute this tree and save it to disk to speed up processing.
 ```javascript
-import { createRoot, addPattern, buildAho, findPatterns } from 'aho.js';
-
-// Build the trie
-const root = createRoot();
-const patterns = loadPatterns();
-patterns.forEach(s => addPattern(root, s));
-const built = buildAho(root);
+const fs = require('fs');
 
 // Save the trie
-const fs = require('fs');
 fs.writeFileSync(path, JSON.stringify(built));
 
 // Load the trie
@@ -103,9 +100,38 @@ const matches = findPatterns(loadedTrie, 'ushers');
 // ['she', 'he', 'hers']
 ```
 
+## Print the trie
+You can print out a visualization of the structure of the trie using one of the following functions.
+
+```javascript
+const root = createRoot();
+const patterns = ['he', 'she', 'his', 'hers'];
+patterns.forEach(p => addPattern(root, p));
+const built = buildAho(root);
+
+console.log(printToString(built));           // Print to a string
+printToStream(built).pipe(process.stdout);   // Print to a stream
+// [] ^
+//  [h] ^
+//    [e]* ^
+//      [r] ^
+//        [s]* ^s
+//    [i] ^
+//      [s]* ^s
+//  [s] ^
+//    [h] ^h
+//      [e]* ^he
+
+// [h]* ^fallback
+// where
+// [h]       = value of the token at this node
+// *         = indicates a pattern matches on this node
+// ^         = root node
+// fallback  = path of the node to fallback to
+```
 
 ## Typescript
-This module is built using typescript and compiled into ES5.
+This module is written in Typescript and compiled to ES5.
 
 ```typescript
 import { Root, createRoot, addPattern, buildAho, findPatterns } from 'aho.js';
@@ -113,7 +139,7 @@ import { Root, createRoot, addPattern, buildAho, findPatterns } from 'aho.js';
 const root: Root<number> = createRoot<number>();
 const patterns = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 patterns.forEach(p => addPattern(root, p));
-const built: Root<number> = buildAho(root);
+const built = buildAho(root);
 const matches = findPatterns(built, [2, 3, 4, 5, 6, 7]);
-// [[1, 2, 3]]
+// [[4, 5, 6]]
 ```
