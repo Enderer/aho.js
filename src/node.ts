@@ -26,3 +26,6 @@ export const getChild = <T = string>(node: Node<T>, token: T): Node<T> | undefin
   let child = children.find(c => c.token === token);
   return child;
 };
+
+/** Initializes a root node of an aho corasick trie */
+export const createRoot = <T = string>(): Root<T> => ({ path: '^' });
