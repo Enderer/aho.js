@@ -1,0 +1,354 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`add-patterns should create a trie 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "parent": [Circular],
+                  "path": "^hers",
+                  "pattern": "hers",
+                  "token": "s",
+                },
+              ],
+              "parent": [Circular],
+              "path": "^her",
+              "token": "r",
+            },
+          ],
+          "parent": [Circular],
+          "path": "^he",
+          "pattern": "he",
+          "token": "e",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "parent": [Circular],
+              "path": "^his",
+              "pattern": "his",
+              "token": "s",
+            },
+          ],
+          "parent": [Circular],
+          "path": "^hi",
+          "token": "i",
+        },
+      ],
+      "parent": [Circular],
+      "path": "^h",
+      "token": "h",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "parent": [Circular],
+              "path": "^she",
+              "pattern": "she",
+              "token": "e",
+            },
+          ],
+          "parent": [Circular],
+          "path": "^sh",
+          "token": "h",
+        },
+      ],
+      "parent": [Circular],
+      "path": "^s",
+      "token": "s",
+    },
+  ],
+  "path": "^",
+}
+`;
+
+exports[`add-patterns should create a trie 2`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "parent": [Circular],
+                              "path": "^abcdefz",
+                              "pattern": "abcdefz",
+                              "token": "z",
+                            },
+                          ],
+                          "parent": [Circular],
+                          "path": "^abcdef",
+                          "pattern": "abcdef",
+                          "token": "f",
+                        },
+                      ],
+                      "parent": [Circular],
+                      "path": "^abcde",
+                      "token": "e",
+                    },
+                  ],
+                  "parent": [Circular],
+                  "path": "^abcd",
+                  "pattern": "abcd",
+                  "token": "d",
+                },
+              ],
+              "parent": [Circular],
+              "path": "^abc",
+              "token": "c",
+            },
+          ],
+          "parent": [Circular],
+          "path": "^ab",
+          "pattern": "ab",
+          "token": "b",
+        },
+      ],
+      "parent": [Circular],
+      "path": "^a",
+      "token": "a",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "parent": [Circular],
+          "path": "^bc",
+          "pattern": "bc",
+          "token": "c",
+        },
+        Object {
+          "parent": [Circular],
+          "path": "^bd",
+          "pattern": "bd",
+          "token": "d",
+        },
+      ],
+      "parent": [Circular],
+      "path": "^b",
+      "token": "b",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "parent": [Circular],
+              "path": "^cde",
+              "pattern": "cde",
+              "token": "e",
+            },
+          ],
+          "parent": [Circular],
+          "path": "^cd",
+          "pattern": "cd",
+          "token": "d",
+        },
+      ],
+      "parent": [Circular],
+      "path": "^c",
+      "pattern": "c",
+      "token": "c",
+    },
+    Object {
+      "parent": [Circular],
+      "path": "^e",
+      "pattern": "e",
+      "token": "e",
+    },
+    Object {
+      "parent": [Circular],
+      "path": "^f",
+      "pattern": "f",
+      "token": "f",
+    },
+  ],
+  "path": "^",
+}
+`;
+
+exports[`add-patterns should create a trie 3`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "parent": [Circular],
+                                              "path": "^antioxidant",
+                                              "pattern": "antioxidant",
+                                              "token": "t",
+                                            },
+                                          ],
+                                          "parent": [Circular],
+                                          "path": "^antioxidan",
+                                          "token": "n",
+                                        },
+                                      ],
+                                      "parent": [Circular],
+                                      "path": "^antioxida",
+                                      "token": "a",
+                                    },
+                                  ],
+                                  "parent": [Circular],
+                                  "path": "^antioxid",
+                                  "token": "d",
+                                },
+                              ],
+                              "parent": [Circular],
+                              "path": "^antioxi",
+                              "token": "i",
+                            },
+                          ],
+                          "parent": [Circular],
+                          "path": "^antiox",
+                          "token": "x",
+                        },
+                      ],
+                      "parent": [Circular],
+                      "path": "^antio",
+                      "token": "o",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "parent": [Circular],
+                                      "path": "^antipathy",
+                                      "pattern": "antipathy",
+                                      "token": "y",
+                                    },
+                                  ],
+                                  "parent": [Circular],
+                                  "path": "^antipath",
+                                  "token": "h",
+                                },
+                              ],
+                              "parent": [Circular],
+                              "path": "^antipat",
+                              "token": "t",
+                            },
+                          ],
+                          "parent": [Circular],
+                          "path": "^antipa",
+                          "token": "a",
+                        },
+                      ],
+                      "parent": [Circular],
+                      "path": "^antip",
+                      "token": "p",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "parent": [Circular],
+                                      "path": "^antivirus",
+                                      "pattern": "antivirus",
+                                      "token": "s",
+                                    },
+                                  ],
+                                  "parent": [Circular],
+                                  "path": "^antiviru",
+                                  "token": "u",
+                                },
+                              ],
+                              "parent": [Circular],
+                              "path": "^antivir",
+                              "token": "r",
+                            },
+                          ],
+                          "parent": [Circular],
+                          "path": "^antivi",
+                          "token": "i",
+                        },
+                      ],
+                      "parent": [Circular],
+                      "path": "^antiv",
+                      "token": "v",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "parent": [Circular],
+                              "path": "^antigen",
+                              "pattern": "antigen",
+                              "token": "n",
+                            },
+                          ],
+                          "parent": [Circular],
+                          "path": "^antige",
+                          "token": "e",
+                        },
+                      ],
+                      "parent": [Circular],
+                      "path": "^antig",
+                      "token": "g",
+                    },
+                  ],
+                  "parent": [Circular],
+                  "path": "^anti",
+                  "token": "i",
+                },
+              ],
+              "parent": [Circular],
+              "path": "^ant",
+              "token": "t",
+            },
+          ],
+          "parent": [Circular],
+          "path": "^an",
+          "token": "n",
+        },
+      ],
+      "parent": [Circular],
+      "path": "^a",
+      "token": "a",
+    },
+  ],
+  "path": "^",
+}
+`;

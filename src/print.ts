@@ -1,5 +1,5 @@
 import { Readable } from 'stream';
-import { Node } from './node';
+import { Node } from './trie';
 
 /**
  * Prints the structure of a trie to a list of strings
@@ -7,7 +7,7 @@ import { Node } from './node';
  * @param n Root node of the trie to print
  * @param d Depth if indenting at the root node
  */
-export function *printToIterable<T>(n: Node<T>, d = 0): Iterable<string> {
+export function * printToIterable<T> (n: Node<T>, d = 0): Iterable<string> {
   const token = n.token ?? '';
   const fallback = n.fallback?.path ?? '';
   const pattern = n.pattern ? '*' : '';
@@ -15,7 +15,7 @@ export function *printToIterable<T>(n: Node<T>, d = 0): Iterable<string> {
   const pre = '  '.repeat(d);
   yield `${pre}[${token}]${pattern} ${fallback}\n`;
   const children = n.children ?? [];
-  for(const [i, child] of children.entries()){
+  for (const [, child] of children.entries()) {
     yield * printToIterable(child, d + 1);
   }
 };
@@ -37,4 +37,3 @@ export const printToStream = <T>(n: Node<T>, d: number = 0) => {
 export const printToString = <T>(n: Node<T>, d: number = 0) => {
   return Array.from(printToIterable(n, d)).join('');
 };
-

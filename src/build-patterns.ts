@@ -1,6 +1,4 @@
-import { getChild, Root } from './node';
-import { walkBFS } from './walk-bfs';
-import { walkFallback } from './walk-fallback';
+import { getChild, Root, walkBFS, walkFallback } from './trie';
 
 /**
  * Once all patterns have been added to the trie prepare it for searching.
@@ -8,7 +6,7 @@ import { walkFallback } from './walk-fallback';
  * pattern when a match fails.
  * @param root Root node of a search trie
  */
-export const buildAho = <T = string>(root: Root<T>): Root<T> => {
+export const buildPatterns = <T = string>(root: Root<T>): Root<T> => {
   root.fallback = root;
   for (const node of walkBFS(root)) {
     if (node === root) { continue; }
@@ -25,4 +23,4 @@ export const buildAho = <T = string>(root: Root<T>): Root<T> => {
     if (node.fallback === node) { node.fallback = root; }
   }
   return root;
-}
+};

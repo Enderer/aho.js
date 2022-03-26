@@ -1,15 +1,15 @@
 import { addPattern } from './add-pattern';
-import { buildAho } from './build-aho';
+import { buildPatterns } from './build-patterns';
 import { findPatterns } from './find-patterns';
-import { createRoot, } from './node';
+import { createRoot } from './trie';
 import { printToStream } from './print';
 
-describe('aho', () => {
+describe('find-patterns', () => {
   it('should run a test', () => {
     let root = createRoot();
     const patterns = ['abcd', 'abcdef', 'abcdefz', 'ab', 'bc', 'bd', 'cd', 'cde', 'e', 'f', 'c'];
     patterns.forEach(s => addPattern(root, s));
-    root = buildAho(root);
+    root = buildPatterns(root);
 
     // console.log(printToString(root));
     printToStream(root).pipe(process.stdout);
