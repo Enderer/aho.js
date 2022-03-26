@@ -24,7 +24,7 @@ export function * findPatterns<T = string> (
 }
 
 /**
- * Search for patterns in an asyncronous stream of tokens
+ * Search for patterns in an asynchronous stream of tokens
  * @param root Root node of a search trie containing patterns to look for
  * @param stream Token stream that returns tokens asynchronously
  */
