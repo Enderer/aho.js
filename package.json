@@ -1,17 +1,23 @@
 {
   "name": "aho.js",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Pattern finding library for NodeJS",
+  "main": "dist/lib/index.js",
+  "files": ["dist/lib/**/*"],
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
     "build": "tsc",
-    "lint": "eslint .",
-    "package": "npm run lint && npm run build && npm run test"
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["aho", "corasick", "aho-corasick", "node", "javascript", "string matching", "pattern matching"],
+  "author": "Stephen Marsh",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^27.4.1",
