@@ -1,9 +1,11 @@
 {
   "name": "aho.js",
-  "version": "1.0.1",
+  "version": "0.1.0",
   "description": "Pattern finding library for NodeJS",
   "main": "dist/lib/index.js",
-  "files": ["dist/lib/**/*"],
+  "files": [
+    "dist/lib/**/*"
+  ],
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
@@ -15,7 +17,15 @@
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "keywords": ["aho", "corasick", "aho-corasick", "node", "javascript", "string matching", "pattern matching"],
+  "keywords": [
+    "aho",
+    "corasick",
+    "aho-corasick",
+    "node",
+    "javascript",
+    "string matching",
+    "pattern matching"
+  ],
   "author": "Stephen Marsh",
   "license": "ISC",
   "devDependencies": {
