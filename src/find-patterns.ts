@@ -10,6 +10,9 @@ export function * findPatterns<T = string> (
   root: Root<T>,
   stream: Pattern<T>
 ): Iterable<Pattern<T>> {
+  if (root == null) { throw new Error('Root is null'); }
+  if (stream == null) { throw new Error('Token stream is null'); }
+
   let node: Node<T> = root;
   for (const token of stream) {
     while (getChild(node, token) == null && node !== root) {

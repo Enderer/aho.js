@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`print-to printToStream should print a trie 1`] = `
+"[] ^
+  [h] ^
+    [e]* ^
+      [r] ^
+        [s]* ^s
+    [i] ^
+      [s]* ^s
+  [s] ^
+    [h] ^h
+      [e]* ^he
+"
+`;
+
+exports[`print-to printToStream should print a trie 2`] = `
+"[] ^
+  [a] ^
+    [b]* ^b
+      [c] ^bc
+        [d]* ^cd
+          [e] ^cde
+            [f]* ^f
+              [z]* ^
+  [b] ^
+    [c]* ^c
+    [d]* ^
+  [c]* ^
+    [d]* ^
+      [e]* ^e
+  [e]* ^
+  [f]* ^
+"
+`;
+
+exports[`print-to printToStream should print a trie 3`] = `
+"[] ^
+  [a] ^
+    [n] ^
+      [t] ^
+        [i] ^
+          [o] ^
+            [x] ^
+              [i] ^
+                [d] ^
+                  [a] ^a
+                    [n] ^an
+                      [t]* ^ant
+          [p] ^
+            [a] ^a
+              [t] ^
+                [h] ^
+                  [y]* ^
+          [v] ^
+            [i] ^
+              [r] ^
+                [u] ^
+                  [s]* ^
+          [g] ^
+            [e] ^
+              [n]* ^
+"
+`;
+
+exports[`print-to printToString should print a trie 1`] = `
+"[] ^
+  [h] ^
+    [e]* ^
+      [r] ^
+        [s]* ^s
+    [i] ^
+      [s]* ^s
+  [s] ^
+    [h] ^h
+      [e]* ^he
+"
+`;
+
+exports[`print-to printToString should print a trie 2`] = `
+"[] ^
+  [a] ^
+    [b]* ^b
+      [c] ^bc
+        [d]* ^cd
+          [e] ^cde
+            [f]* ^f
+              [z]* ^
+  [b] ^
+    [c]* ^c
+    [d]* ^
+  [c]* ^
+    [d]* ^
+      [e]* ^e
+  [e]* ^
+  [f]* ^
+"
+`;
+
+exports[`print-to printToString should print a trie 3`] = `
+"[] ^
+  [a] ^
+    [n] ^
+      [t] ^
+        [i] ^
+          [o] ^
+            [x] ^
+              [i] ^
+                [d] ^
+                  [a] ^a
+                    [n] ^an
+                      [t]* ^ant
+          [p] ^
+            [a] ^a
+              [t] ^
+                [h] ^
+                  [y]* ^
+          [v] ^
+            [i] ^
+              [r] ^
+                [u] ^
+                  [s]* ^
+          [g] ^
+            [e] ^
+              [n]* ^
+"
+`;

@@ -1,5 +1,5 @@
 # Aho.js
-This is a node module can be used to find matching patterns in a string.  It is useful for scenarios where you need to search a string for known patterns when the number of possible patterns is very large.  It uses the algorithm origionally described in the paper [Efficient String Matching - An Aid to Bibliographic Search](https://github.com/tpn/pdfs/blob/master/Efficient%20String%20Matching%20-%20An%20Aid%20to%20Bibliographic%20Search%20-%20Aho-Corasick%20(1975).pdf) by Alfred Aho and Margaret Corasick.
+Aho.js is a node module that can be used to find matching patterns in a string.  It is useful for scenarios where you need to search a string for known patterns when the number of possible patterns is very large.  It uses the algorithm originally described in the paper [Efficient String Matching - An Aid to Bibliographic Search](https://github.com/tpn/pdfs/blob/master/Efficient%20String%20Matching%20-%20An%20Aid%20to%20Bibliographic%20Search%20-%20Aho-Corasick%20(1975).pdf) by Alfred Aho and Margaret Corasick.
 
 ## Install
 ```
@@ -24,10 +24,10 @@ const matches = findPatterns(built, 'ushers');
 ```
 
 ### Search async text
-It is possible to search for patterns in an asycnronous string using the ```findPatternsAsync ``` method. This can be useful for processing very large bodies of text without the need to load it entirely into memory.
+It is possible to search for patterns in an asynchronous string using the ```findPatternsAsync ``` method. This can be useful for processing very large bodies of text without the need to load it entirely into memory.
 ```javascript
 // Load chars as an AsyncIterable
-const asyncChars: AsyncIterable<string> = getAsyncChars(...);
+const asyncChars = getAsyncChars(...); // AsyncIterable<string>
 
 // Get an async list of matches
 const matches = findPatternsAsync(built, asyncChars);
@@ -75,7 +75,7 @@ const tokenizedIds = tokenizedText.map(t => vocab.toId(v));
 const matches = findPatterns(built, tokenizedIds);
 // [[122, 34, 632], [2, 14, 56]]
 
-const phraseMatches = mathes.map(p => vocab.toToken(p));
+const phraseMatches = matches.map(p => vocab.toToken(p));
 // [['blessing', 'in', 'disguise'], ['under', 'the', 'weather']]
 
 ```
@@ -87,7 +87,7 @@ n = length of all patterns in dictionary
 m = length of text being searched
 z = length of all matches found
 ```
-When the size of the dictionary being matched against is very large ```(n is much larger than m, z)``` most of the time will be spent buiding the search trie.  You can pre-compute this tree and save it to disk to speed up processing.
+When the size of the dictionary being matched against is very large ```(n is much larger than m, z)``` most of the time will be spent building the search trie.  You can pre-compute this tree and save it to disk to speed up processing.
 ```javascript
 const fs = require('fs');
 

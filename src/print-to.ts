@@ -8,6 +8,7 @@ import { Node } from './trie';
  * @param d Depth if indenting at the root node
  */
 export function * printToIterable<T> (n: Node<T>, d = 0): Iterable<string> {
+  if (n == null) { return ''; }
   const token = n.token ?? '';
   const fallback = n.fallback?.path ?? '';
   const pattern = n.pattern ? '*' : '';
@@ -26,7 +27,7 @@ export function * printToIterable<T> (n: Node<T>, d = 0): Iterable<string> {
  * @param d Depth if indenting at the root node
  */
 export const printToStream = <T>(n: Node<T>, d: number = 0) => {
-  return Readable.from(printToIterable(n, d));
+  return Readable.from(printToIterable(n, d), { encoding: 'utf8' });
 };
 
 /**
