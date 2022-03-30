@@ -1,3 +1,5 @@
+![Aho Corasick Trie](https://github.com/enderer/aho.js/blob/main/assets/trie.png?raw=true)
+
 # Aho.js
 Aho.js is a node module that can be used to find matching patterns in a string.  It is useful for scenarios where you need to search a string for known patterns when the number of possible patterns is very large.  It uses the algorithm originally described in the paper [Efficient String Matching - An Aid to Bibliographic Search](https://github.com/tpn/pdfs/blob/master/Efficient%20String%20Matching%20-%20An%20Aid%20to%20Bibliographic%20Search%20-%20Aho-Corasick%20(1975).pdf) by Alfred Aho and Margaret Corasick.
 
@@ -9,27 +11,29 @@ npm install aho.js
 ## Usage
 ### Search for matches
 ```javascript
-import { createRoot, addPattern, buildAho, findPatterns } from 'aho.js';
+import { createRoot, addPattern, buildPatterns, findPatterns } from 'aho.js';
 
+// Add known patterns to the search trie
 const patterns = ['he', 'she', 'his', 'hers'];
-
-// Create the search trie
 const root = createRoot();
 patterns.forEach(p => addPattern(root, p));
-const built = buildAho(root);
 
 // Look for matches
+const built = buildPatterns(root);
 const matches = findPatterns(built, 'ushers');
-// ['she', 'he', 'hers']
+// [
+//   { pattern: 'she', start: 1, length: 3 }, 
+//   { pattern: 'he', start: 2, length: 2 },
+//   { pattern: 'hers', start: 2, length: 4 }
+// ]
 ```
 
 ### Search async text
 It is possible to search for patterns in an asynchronous string using the ```findPatternsAsync ``` method. This can be useful for processing very large bodies of text without the need to load it entirely into memory.
 ```javascript
-// Load chars as an AsyncIterable
 const asyncChars = getAsyncChars(...); // AsyncIterable<string>
 
-// Get an async list of matches
+// Find an async list of matches
 const matches = findPatternsAsync(built, asyncChars);
 for await(const match of matches) {
   console.log(JSON.stringify(match));
@@ -46,10 +50,10 @@ const patterns = phrases.map(p => p.split(' '))
 
 const root = createRoot();
 patterns.forEach(p => addPattern(root, p));
-const built = buildAho(root);
+const built = buildPatterns(root);
 const tokenizedText = 'zero one two three four'.split(' ');
 const matches = findPatterns(built, tokenizedText);
-// [['one', 'two', 'three']]
+// [{ pattern: ['one', 'two', 'three'], start: 0, length: 3 }]
 ```
 
 ### Search non-char patterns
@@ -69,14 +73,20 @@ const patterns = [
 
 const root = createRoot();
 patterns.forEach(s => addPattern(root, s));
-const built = buildAho(root);
+const built = buildPatterns(root);
 const tokenizedText = ['this', 'is', 'a' 'tokenized', 'string', ...];
 const tokenizedIds = tokenizedText.map(t => vocab.toId(v));
 const matches = findPatterns(built, tokenizedIds);
-// [[122, 34, 632], [2, 14, 56]]
+// [
+//   { pattern: [122, 34, 632], start: 10, length: 3 },
+//   { pattern: [2, 14, 56], start: 42, length: 3}
+// ]
 
-const phraseMatches = matches.map(p => vocab.toToken(p));
-// [['blessing', 'in', 'disguise'], ['under', 'the', 'weather']]
+const phraseMatches = matches.map(m => m.pattern.map(=> vocab.toToken(p)));
+// [
+//   ['blessing', 'in', 'disguise'],
+//   ['under', 'the', 'weather']
+// ]
 
 ```
 
@@ -97,7 +107,11 @@ fs.writeFileSync(path, JSON.stringify(built));
 // Load the trie
 const loadedTrie = JSON.parse(fs.readFileSync(path, 'utf8'));
 const matches = findPatterns(loadedTrie, 'ushers');
-// ['she', 'he', 'hers']
+// [
+//   { pattern: 'she', start: 1, length: 3 }, 
+//   { pattern: 'he', start: 2, length: 2 },
+//   { pattern: 'hers', start: 2, length: 4 }
+// ]
 ```
 
 ## Print the trie
@@ -107,7 +121,7 @@ You can print out a visualization of the structure of the trie using one of the 
 const root = createRoot();
 const patterns = ['he', 'she', 'his', 'hers'];
 patterns.forEach(p => addPattern(root, p));
-const built = buildAho(root);
+const built = buildPatterns(root);
 
 console.log(printToString(built));           // Print to a string
 printToStream(built).pipe(process.stdout);   // Print to a stream
@@ -134,12 +148,11 @@ printToStream(built).pipe(process.stdout);   // Print to a stream
 This module is written in Typescript and compiled to ES5.
 
 ```typescript
-import { Root, createRoot, addPattern, buildAho, findPatterns } from 'aho.js';
+import { Root, createRoot, addPattern, buildPatterns, findPatterns } from 'aho.js';
 
 const root: Root<number> = createRoot<number>();
-const patterns = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+const patterns: Pattern<number> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 patterns.forEach(p => addPattern(root, p));
-const built = buildAho(root);
-const matches = findPatterns(built, [2, 3, 4, 5, 6, 7]);
-// [[4, 5, 6]]
+const built: Root<number> = buildPatterns(root);
+const matches: Iterable<PatternMatch<number>> = findPatterns(built, [2, 3, 4, 5, 6, 7]);
 ```

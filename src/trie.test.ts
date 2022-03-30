@@ -3,7 +3,7 @@ import { createRoot, getChild, Root } from './trie';
 describe('trie', () => {
   describe('createRoot', () => {
     it('should handle null root', () => {
-      expect(createRoot()).toEqual({ path: '^' });
+      expect(createRoot()).toEqual({ path: '^', depth: 0 });
     });
   });
 
@@ -17,16 +17,16 @@ describe('trie', () => {
     });
 
     it('should handle empty children', () => {
-      expect(getChild({ path: '^', children: [] }, null)).toBeUndefined();
+      expect(getChild({ path: '^', depth: 10, children: [] }, null)).toBeUndefined();
     });
 
     it('should be undefined if child doesnt exists', () => {
-      expect(getChild({ path: '^', children: [{ token: 'b' }] }, 'a')).toBeUndefined();
+      expect(getChild({ path: '^', depth: 0, children: [{ token: 'b', depth: 1 }] }, 'a')).toBeUndefined();
     });
 
     it('should find child', () => {
-      const child = { token: 'a' };
-      expect(getChild({ path: '^', children: [child] }, 'a')).toBe(child);
+      const child = { token: 'a', depth: 1 };
+      expect(getChild({ path: '^', children: [child], depth: 0 }, 'a')).toBe(child);
     });
   });
 });

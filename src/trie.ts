@@ -7,12 +7,12 @@ export interface Node<T = string> {
   parent?: Node<T>;
   fallback?: Node<T>;
   path?: string;
-  depth?: number;
+  depth: number;
 }
 
 export interface Root<T = string> extends Node<T> {}
 
-export const createRoot = <T = string>(): Root<T> => ({ path: '^' });
+export const createRoot = <T = string>(): Root<T> => ({ path: '^', depth: 0 });
 
 /**
  * Get the child node that matches a given token value if one exists.

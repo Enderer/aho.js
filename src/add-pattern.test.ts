@@ -21,6 +21,6 @@ describe('add-patterns', () => {
       ['abcd', 'abcdef', 'abcdefz', 'ab', 'bc', 'bd', 'cd', 'cde', 'e', 'f', 'c'],
       ['antioxidant', 'antipathy', 'antivirus', 'antigen'],
       ['a', 'ab', 'abc', 'abcd', 'abcde', 'abcdef']
-    ].forEach(p => expect(p.reduce((r, p) => addPattern(r, p), createRoot())).toMatchSnapshot());
+    ].forEach(p => expect(p.reduce(addPattern, createRoot())).toMatchSnapshot());
   });
 });

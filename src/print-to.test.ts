@@ -24,7 +24,6 @@ describe('print-to', () => {
   });
 
   describe('printToStream', () => {
-
     it('should print a trie', async () => {
       const patterns = [
         ['he', 'she', 'his', 'hers'],

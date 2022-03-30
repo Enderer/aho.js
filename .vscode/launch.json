@@ -2,6 +2,22 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Debug File",
+      "type": "node",
+      "request": "launch",
+      "args": [
+        "${file}"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register"
+      ],
+      "sourceMaps": true,
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+    },
+    {
       "name": "Debug Tests",
       "type": "node",
       "request": "launch",

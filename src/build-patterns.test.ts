@@ -20,6 +20,6 @@ describe('add-patterns', () => {
       ['he', 'she', 'his', 'hers'],
       ['abcd', 'abcdef', 'abcdefz', 'ab', 'bc', 'bd', 'cd', 'cde', 'e', 'f', 'c'],
       ['antioxidant', 'antipathy', 'antivirus', 'antigen']
-    ].forEach(p => expect(p.reduce((r, p) => addPattern(r, p), createRoot())).toMatchSnapshot());
+    ].forEach(p => expect(p.reduce(addPattern, createRoot())).toMatchSnapshot());
   });
 });
