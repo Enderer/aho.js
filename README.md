@@ -1,4 +1,4 @@
-![Aho Corasick Trie](https://github.com/enderer/aho.js/blob/main/assets/trie.png?raw=true)
+<img alt="Aho Corasick Trie" src="https://github.com/enderer/aho.js/blob/main/assets/trie.png?raw=true" width="250">
 
 # Aho.js
 Aho.js is a node module that can be used to find matching patterns in a string.  It is useful for scenarios where you need to search a string for known patterns when the number of possible patterns is very large.  It uses the algorithm originally described in the paper [Efficient String Matching - An Aid to Bibliographic Search](https://github.com/tpn/pdfs/blob/master/Efficient%20String%20Matching%20-%20An%20Aid%20to%20Bibliographic%20Search%20-%20Aho-Corasick%20(1975).pdf) by Alfred Aho and Margaret Corasick.

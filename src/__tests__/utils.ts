@@ -51,3 +51,13 @@ export const patternSort = <T>(a: Pattern<T>, b: Pattern<T>) => {
   }
   return 0;
 };
+
+export const evens = function * (s = 0): Pattern<number> {
+  while (true) { yield s += 2; }
+};
+
+export const powersOf = function * (b: number = 2, n: number = Infinity): Iterable<Pattern<number>> {
+  for (let p = 1; p < n; p++) {
+    yield [b ** p, (b ** p) + 2];
+  }
+};
