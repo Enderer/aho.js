@@ -1,6 +1,6 @@
 import { combinations, patternSort, sequence, toArray, toAsyncIterable } from './__tests__/utils';
 import { findPatterns, findPatternsAsync, PatternMatch } from './find-patterns';
-import { addPattern, Pattern } from './add-pattern';
+import { addPattern, Pattern, PatternAsync } from './add-pattern';
 import { buildPatterns } from './build-patterns';
 import { createRoot, Root } from './trie';
 
@@ -57,6 +57,16 @@ describe('find-patterns', () => {
   });
 
   describe('findPatternsAsync', () => {
+    it('should handle null root', async () => {
+      const matches = findPatternsAsync(null as unknown as Root, toAsyncIterable('123456789'));
+      await expect(toArray(matches)).rejects.toThrowError();
+    });
+
+    it('should handle null pattern', async () => {
+      const matches = findPatternsAsync(createRoot(), null as unknown as PatternAsync);
+      await expect(toArray(matches)).rejects.toThrowError();
+    });
+
     it('should find patterns', async () => {
       const p = await findAsync(
         ['he', 'she', 'his', 'hers'],
