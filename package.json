@@ -1,9 +1,9 @@
 {
   "name": "aho.js",
-  "version": "0.1.3",
+  "version": "0.1.0",
   "description": "Pattern finding library for NodeJS",
   "main": "dist/lib/index.js",
-  "files": ["./dist/lib/**/*", "./coverage/**/*"],
+  "files": ["dist/lib/", "coverage/"],
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",

@@ -2,3 +2,4 @@
 /coverage
 /scripts
 jest.config.js
+**/*.test.ts
