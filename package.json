@@ -1,7 +1,8 @@
 {
   "name": "aho.js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Pattern finding library for NodeJS",
+  "type": "module",
   "main": "dist/lib/index.js",
   "files": ["dist/lib/", "coverage/"],
   "scripts": {
